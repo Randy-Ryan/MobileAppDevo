@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "214446148911",
+    "project_id": "mobileappdevo",
+    "storage_bucket": "mobileappdevo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214446148911:android:a4652b1e66f6865bc3e5da",
+        "android_client_info": {
+          "package_name": "edu.wit.mobileapp.mobileappfinal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214446148911-sms49l4soo3vqfecoeavv1rmt94a2ppe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGOkXbY-1MNwGcEalmq6KkxgWK6pGbvZc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "214446148911-sms49l4soo3vqfecoeavv1rmt94a2ppe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
