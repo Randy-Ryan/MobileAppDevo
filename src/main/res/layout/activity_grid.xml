@@ -2,57 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/home_text2"
-        android:layout_width="252dp"
-        android:layout_height="32dp"
-        android:gravity="center"
-        android:text="Test2"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.09" />
-
-    <TextView
-        android:id="@+id/home_text1"
-        android:layout_width="248dp"
-        android:layout_height="38dp"
-        android:text="Test1"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.036"
-        android:gravity="center_horizontal" />
-
-    <TextView
-        android:id="@+id/home_text3"
-        android:layout_width="246dp"
-        android:layout_height="46dp"
-        android:gravity="center"
-        android:text="Test3"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.137" />
-
     <ImageView
-        android:id="@+id/home_shop_button"
+        android:id="@+id/home_post_button"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:gravity="center"
@@ -62,34 +16,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.332"
-        android:background="@drawable/shopicon"/>
+        android:background="@drawable/posticon"/>
 
     <ImageView
         android:id="@+id/home_account_button"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:background="@drawable/image_profile"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.522"
-        android:background="@drawable/image_profile"/>
+        app:layout_constraintVertical_bias="0.622" />
 
     <ImageView
-        android:id="@+id/home_ttt_button"
+        android:id="@+id/home_feed_button"
         android:layout_width="153dp"
         android:layout_height="139dp"
+        android:background="@drawable/feedicon"
         android:gravity="center"
-        android:text="Tic Tac Toe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.311"
+        app:layout_constraintHorizontal_bias="0.232"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.408"
-        android:background="@drawable/gameicon"/>
+        app:layout_constraintVertical_bias="0.481" />
 
     <Button
         android:id="@+id/home_signout_button"

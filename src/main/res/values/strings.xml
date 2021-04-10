@@ -10,7 +10,7 @@
 
     <string name="input_placeholder">Write a message</string>
 
-    <string name="login_title">Welcome to That Game Chat</string>
+    <string name="login_title">Welcome to Mobile App Final</string>
     <string name="login_text1">Please enter your credentials</string>
     <string name="login_text2"><u>Not registered yet? Sign up here.</u></string>
 
@@ -19,7 +19,7 @@
     <string name="login_button">LOG IN</string>
 
 
-    <string name="register_title">That Game Chat Registration</string>
+    <string name="register_title">Mobile App Final Registration</string>
     <string name="register_text1">Please provide your information below</string>
     <string name="register_text2"><u>Back to Login Page</u></string>
     <string name="register_fullName">Enter a username</string>

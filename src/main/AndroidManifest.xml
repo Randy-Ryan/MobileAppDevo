@@ -43,7 +43,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Shop"
+        <activity android:name=".Post"
             android:label="@string/shop_page">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

@@ -20,7 +20,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 
 public class Login extends AppCompatActivity {
-    public static final String TAG = "TAG";
 
     //initialize class variables
     EditText mEmail, mPassword;
@@ -43,54 +42,43 @@ public class Login extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
 
         //route to register page
-        mRegisterBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), Register.class));
-            }
-        });
+        mRegisterBtn.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Register.class)));
 
         //when login button is clicked
-        mLoginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        mLoginBtn.setOnClickListener(v -> {
 
-                //this line is just so we don't have to sign in every time
-                //testing purposes
-                startActivity(new Intent(getApplicationContext(), Home.class));
+            //this line is just so we don't have to sign in every time
+            //testing purposes
+            startActivity(new Intent(getApplicationContext(), Home.class));
 
-                final String email = mEmail.getText().toString().trim();
-                String password = mPassword.getText().toString().trim();
+            final String email = mEmail.getText().toString().trim();
+            String password = mPassword.getText().toString().trim();
 
-                //checks if inputs are empty
-                //can implement more errors to display to user for invalid logins
-                if (TextUtils.isEmpty(email)) {
-                    mEmail.setError("Email input is required.");
-                    return;
-                }
-
-                if (TextUtils.isEmpty(password)) {
-                    mPassword.setError("Password input is required.");
-                    return;
-                }
-
-                fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(Login.this, "Successfully Logged In", Toast.LENGTH_LONG).show();
-                            //after authentication is complete - route to homepage
-                            startActivity(new Intent(getApplicationContext(), Home.class));
-                            finish();
-                        } else {
-                            //can further implement here
-                            //highlight fields in red
-                            Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-
+            //checks if inputs are empty
+            //can implement more errors to display to user for invalid logins
+            if (TextUtils.isEmpty(email)) {
+                mEmail.setError("Email input is required.");
+                return;
             }
+
+            if (TextUtils.isEmpty(password)) {
+                mPassword.setError("Password input is required.");
+                return;
+            }
+
+            fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    Toast.makeText(Login.this, "Successfully Logged In", Toast.LENGTH_LONG).show();
+                    //after authentication is complete - route to homepage
+                    startActivity(new Intent(getApplicationContext(), Home.class));
+                    finish();
+                } else {
+                    //can further implement here
+                    //highlight text fields in red
+                    Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_LONG).show();
+                }
+            });
+
         });
     }
 }
