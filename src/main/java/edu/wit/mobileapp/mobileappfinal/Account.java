@@ -50,23 +50,20 @@ public class Account extends AppCompatActivity {
         t1.setText("Username: " + username);
 
 
-        arrayList = new ArrayList<String>();
+        arrayList = new ArrayList<>();
         ListView listView = (ListView) findViewById(R.id.account_post_view);
-        adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList);
+        adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList);
         listView.setAdapter(adapter);
 
         //show this users posts
         db.collection("feed")
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                if(document.getData().get("postMessage").toString() != null) {
-                                    if (document.getData().get("Username").toString().equals(username)) {
-                                        adapter.add(document.getData().get("Username").toString() + ": " + document.getData().get("postMessage").toString());
-                                    }
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            if(document.getData().get("postMessage").toString() != null) {
+                                if (document.getData().get("Username").toString().equals(username)) {
+                                    adapter.add(document.getData().get("Username").toString() + ": " + document.getData().get("postMessage").toString());
                                 }
                             }
                         }
@@ -77,12 +74,9 @@ public class Account extends AppCompatActivity {
         //initialize home button
         Button homeButton;
         homeButton = findViewById(R.id.account_homebutton);
-        homeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //route to home
-                startActivity(new Intent(getApplicationContext(), Home.class));
-            }
+        homeButton.setOnClickListener(v -> {
+            //route to home
+            startActivity(new Intent(getApplicationContext(), Home.class));
         });
 
     }
