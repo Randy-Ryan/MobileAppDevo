@@ -35,24 +35,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Messages"
-            android:label="@string/messages_page">
+        <activity android:name=".UserAccount"
+            android:label="@string/home_page">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Post"
-            android:label="@string/shop_page">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".Feed"
-            android:label="@string/ttt_page">
+        <activity android:name=".Search"
+            android:label="@string/search_page">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 

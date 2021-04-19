@@ -3,28 +3,28 @@
     <string name="home_page" >Home screen</string>
     <string name="login_page" >Login screen</string>
     <string name="register_page" >Register screen</string>
-    <string name="messages_page" >Messages screen</string>
+    <string name="search_page" >Search screen</string>
     <string name="account_page" >Account screen</string>
     <string name="shop_page" >Shop screen</string>
     <string name="ttt_page" >Tic Tac Toe screen</string>
 
     <string name="input_placeholder">Write a message</string>
 
-    <string name="login_title">Welcome to Mobile App Final</string>
-    <string name="login_text1">Please enter your credentials</string>
+    <string name="login_title">Coders Platform</string>
+    <string name="login_text1">Sign In</string>
     <string name="login_text2"><u>Not registered yet? Sign up here.</u></string>
 
     <string name="login_text_email">Enter your email</string>
     <string name="login_text_password">Enter your password</string>
     <string name="login_button">LOG IN</string>
+    <string name="profile_button">Select Picture</string>
 
-
-    <string name="register_title">Mobile App Final Registration</string>
+    <string name="register_title">Sign Up</string>
     <string name="register_text1">Please provide your information below</string>
     <string name="register_text2"><u>Back to Login Page</u></string>
-    <string name="register_fullName">Enter a username</string>
-    <string name="register_email">Enter a valid email</string>
-    <string name="register_password">Enter a strong password</string>
+    <string name="register_fullName">Username</string>
+    <string name="register_email">Email</string>
+    <string name="register_password">Password</string>
     <string name="register_cpassword">Confirm password</string>
     <string name="register_button">Create My Account</string>
 

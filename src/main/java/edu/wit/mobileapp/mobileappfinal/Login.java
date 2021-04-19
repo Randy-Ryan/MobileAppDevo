@@ -27,11 +27,18 @@ public class Login extends AppCompatActivity {
     Button mLoginBtn;
     FirebaseAuth fAuth;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        try
+        {
+            this.getSupportActionBar().hide();
+        }
+        catch (NullPointerException e){}
 
         //link class variables with layout display variables in xml
         mEmail = findViewById(R.id.login_email);

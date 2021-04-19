@@ -1,53 +1,39 @@
 package edu.wit.mobileapp.mobileappfinal;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.ImageDecoder;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-
-import android.os.ParcelFileDescriptor;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.io.FileDescriptor;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-public class Home<T> extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Search<T> extends AppCompatActivity {
+    EditText searchLink;
 
     public static class GridItem {
         public Uri image;
         public String title;
-        public String date;
-        public String id;
     }
 
     public class GridItemAdapter extends ArrayAdapter<T> {
@@ -83,15 +69,12 @@ public class Home<T> extends AppCompatActivity {
             title = view.findViewById(R.id.title);
             title.setText(item.title);
 
-            //setting date
-            TextView date;
-            date = view.findViewById(R.id.date);
-            date.setText(item.date);
+
             return view;
         }
     }
 
-    public void setFeed() {
+    public void setFeed(String s) {
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
 
@@ -99,7 +82,7 @@ public class Home<T> extends AppCompatActivity {
 
         List<GridItem> list = new ArrayList<>();
         //view feed
-        GridView gridView = findViewById(R.id.feed_view);
+        GridView gridView = findViewById(R.id.search_view);
         GridItemAdapter adapter;
         adapter = new GridItemAdapter(this, 0, list);
         gridView.setAdapter(adapter);
@@ -108,27 +91,22 @@ public class Home<T> extends AppCompatActivity {
             GridItem listItem = (GridItem) gridView.getItemAtPosition(position);
             String str = listItem.title;
             Uri img = listItem.image;
-            String theirID = listItem.id;
-            Log.v("randyyyyy", "" + str);
-            Log.v("randyyyyy", "" + img);
-            Log.v("randyyyyy", "" + theirID);
 
             Intent myIntent = new Intent(gridView.getContext(), UserAccount.class);
             myIntent.putExtra("firstKeyName", str);
-            myIntent.putExtra("secondKeyName", theirID);
+            myIntent.putExtra("secondKeyName", img.toString());
             startActivity(myIntent);
         });
-        //randy
 
         //initializing gridView & setting adapter
 
-        db.collection("feed")
+        db.collection("users")
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         for (QueryDocumentSnapshot document : task.getResult()) {
-
-                            if (document.getData().get("postMessage").toString() != null) {
+                            //change this if statement to a close match instead
+                            if (document.getData().get("Username").toString().equals(s)) {
                                 GridItem item = new GridItem();
                                 //set this posts data on the feed
                                 StorageReference storageRef = storage.getReference();
@@ -138,9 +116,7 @@ public class Home<T> extends AppCompatActivity {
                                     item.image = uri;
                                     //change to username
                                     item.title = document.getData().get("Username").toString();
-                                    //change to postMessage
-                                    item.date = document.getData().get("postMessage").toString();
-                                    item.id = document.getData().get("userID").toString();
+
                                     adapter.add((T)item);
                                 }).addOnFailureListener(exception -> Log.d("Test", " Failed!"));
 
@@ -151,28 +127,38 @@ public class Home<T> extends AppCompatActivity {
                 });
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_search);
 
-        //initialize account button
-        ImageView accountButton;
-        accountButton = findViewById(R.id.home_accountButton);
-        accountButton.setOnClickListener(v -> {
-            //route to account page
-            startActivity(new Intent(getApplicationContext(), Account.class));
+        //link class variables with layout display variables in xml
+        searchLink  = findViewById(R.id.search_input);
+
+
+
+        Button homeButton;
+        homeButton = findViewById(R.id.search_feedButton);
+        homeButton.setOnClickListener(v -> {
+            //route to home
+            startActivity(new Intent(getApplicationContext(), Home.class));
         });
 
         //initialize search button
         ImageView searchButton;
-        searchButton = findViewById(R.id.home_searchButton);
+        searchButton = findViewById(R.id.search_img);
         searchButton.setOnClickListener(v -> {
             //route to account page
-            startActivity(new Intent(getApplicationContext(), Search.class));
-        });
+            String search = searchLink.getText().toString();
+            setFeed(search);
 
-        setFeed();
+        });
+        //functionality to search for accounts
+        //go to their account page
+        //their account page should show their profile pic and their posts
+
+
 
     }
 }
